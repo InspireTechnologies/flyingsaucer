@@ -16,6 +16,16 @@ email and tell us about it; it helps inform where we go next, and is interesting
 and inspiring to other developers.
 
 
+## CHANGES by Inspire Technologies
+
+Some changes for handling form fields:
+* Changed visibility of some methods
+* Set `FLAGS_PRINT` to form fields
+* Fixed handling of boolean HTML attributes like `selected`
+
+TODO: Check for additional changes made to 8.x sources that must be applied again!
+
+
 ## LICENSE
 
 Flying Saucer is distributed under the LGPL.  Flying Saucer itself is licensed 
