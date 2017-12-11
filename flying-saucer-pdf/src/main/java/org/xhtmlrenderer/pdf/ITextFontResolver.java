@@ -37,9 +37,8 @@ import java.io.*;
 import java.util.*;
 
 public class ITextFontResolver implements FontResolver {
-	private static final Comparator<String> STRING_COMPARATOR = String.CASE_INSENSITIVE_ORDER;
-    private Map<String, FontFamily> _fontFamilies = createInitialFontMap();
-    private Map<String, FontDescription> _fontCache = new TreeMap<>();
+    private Map _fontFamilies = createInitialFontMap();
+    private Map _fontCache = new HashMap();
 
     private final SharedContext _sharedContext;
 
@@ -82,11 +81,11 @@ public class ITextFontResolver implements FontResolver {
 
     public void flushCache() {
         _fontFamilies = createInitialFontMap();
-        _fontCache = new TreeMap<>(STRING_COMPARATOR);
+        _fontCache = new HashMap();
     }
 
     public void flushFontFaceFonts() {
-        _fontCache = new TreeMap<>(STRING_COMPARATOR);
+        _fontCache = new HashMap();
 
         for (Iterator i = _fontFamilies.values().iterator(); i.hasNext(); ) {
             FontFamily family = (FontFamily)i.next();
@@ -343,7 +342,7 @@ public class ITextFontResolver implements FontResolver {
     }
 
     public FontFamily getFontFamily(String fontFamilyName) {
-        FontFamily fontFamily = _fontFamilies.get(fontFamilyName);
+        FontFamily fontFamily = (FontFamily)_fontFamilies.get(fontFamilyName);
         if (fontFamily == null) {
             fontFamily = new FontFamily();
             fontFamily.setName(fontFamilyName);
@@ -397,13 +396,13 @@ public class ITextFontResolver implements FontResolver {
         String normalizedFontFamily = normalizeFontFamily(fontFamily);
 
         String cacheKey = getHashName(normalizedFontFamily, weight, style);
-        FontDescription result = _fontCache.get(cacheKey);
+        FontDescription result = (FontDescription)_fontCache.get(cacheKey);
 
         if (result != null) {
             return new ITextFSFont(result, size);
         }
 
-        FontFamily family = _fontFamilies.get(normalizedFontFamily);
+        FontFamily family = (FontFamily)_fontFamilies.get(normalizedFontFamily);
         if (family != null) {
             result = family.match(convertWeightToInt(weight), style);
             if (result != null) {
@@ -453,8 +452,8 @@ public class ITextFontResolver implements FontResolver {
         return name + "-" + weight + "-" + style;
     }
 
-    private static Map<String, FontFamily> createInitialFontMap() {
-        Map<String, FontFamily> result = new TreeMap<>(STRING_COMPARATOR);
+    private static Map createInitialFontMap() {
+        HashMap result = new HashMap();
 
         try {
             addCourier(result);
@@ -484,7 +483,7 @@ public class ITextFontResolver implements FontResolver {
         return BaseFont.createFont(name, encoding, embedded);
     }
 
-    private static void addCourier(Map<String, FontFamily> result) throws DocumentException, IOException {
+    private static void addCourier(HashMap result) throws DocumentException, IOException {
         FontFamily courier = new FontFamily();
         courier.setName("Courier");
 
@@ -502,7 +501,7 @@ public class ITextFontResolver implements FontResolver {
         result.put("Courier", courier);
     }
 
-    private static void addTimes(Map<String, FontFamily> result) throws DocumentException, IOException {
+    private static void addTimes(HashMap result) throws DocumentException, IOException {
         FontFamily times = new FontFamily();
         times.setName("Times");
 
@@ -519,7 +518,7 @@ public class ITextFontResolver implements FontResolver {
         result.put("TimesRoman", times);
     }
 
-    private static void addHelvetica(Map<String, FontFamily> result) throws DocumentException, IOException {
+    private static void addHelvetica(HashMap result) throws DocumentException, IOException {
         FontFamily helvetica = new FontFamily();
         helvetica.setName("Helvetica");
 
@@ -546,7 +545,7 @@ public class ITextFontResolver implements FontResolver {
         result.put("Symbol", fontFamily);
     }
 
-    private static void addZapfDingbats(Map<String, FontFamily> result) throws DocumentException, IOException {
+    private static void addZapfDingbats(Map result) throws DocumentException, IOException {
         FontFamily fontFamily = new FontFamily();
         fontFamily.setName("ZapfDingbats");
 
@@ -603,10 +602,10 @@ public class ITextFontResolver implements FontResolver {
         fontFamilyMap.put(fontFamilyName, fontFamily);
     }
 
-    private static class FontFamily {
+    // AVF: 2017-11-24: Changed visibility from private to protected so that our InFormITextFontResolver can use it.
+    protected static class FontFamily {
         private String _name;
         private List _fontDescriptions;
-
         public FontFamily() {
         }
 

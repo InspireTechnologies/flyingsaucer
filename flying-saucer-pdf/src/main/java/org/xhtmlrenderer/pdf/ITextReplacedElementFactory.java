@@ -118,7 +118,7 @@ public class ITextReplacedElementFactory implements ReplacedElementFactory {
         return true;
     }
 
-    private void saveResult(Element e, RadioButtonFormField result) {
+    protected void saveResult(Element e, RadioButtonFormField result) {
         _radioButtonsByElem.put(e, result);
 
         String fieldName = result.getFieldName(_outputDevice, e);
