@@ -23,8 +23,13 @@ Some changes for handling form fields:
 * Set `FLAGS_PRINT` to form fields
 * Fixed handling of boolean HTML attributes like `selected`
 
-TODO: Check for additional changes made to 8.x sources that must be applied again!
+Check of our changes to V8:
+* 52610: NaiveUserAgent.getBinaryResource: Fixed NullPointerException for missing resource 	==> Fixed in 9.1
 
+The following fixes had to be reapplied:
+* 52614: Fixed ClassCastException in BoxCollector
+* 53311: Make ITextFontResolver case-insensitive (use case-insensitive TreeMap instead of HashMap)
+* 55337: Whitespace handling in CSSParser (Somehow related to Bug 2604: `rd_html_to_pdf` does not find images and stylesheets from the BPM inform server)
 
 ## LICENSE
 

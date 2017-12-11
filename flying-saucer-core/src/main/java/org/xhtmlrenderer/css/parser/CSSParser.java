@@ -1927,11 +1927,11 @@ public class CSSParser {
             case Token.URI:
                 char[] ch = _lexer.yytext().toCharArray();
                 start = 4;
-                while (ch[start] == '\t' || ch[start] == '\r' ||
+                while (ch[start] == ' ' || ch[start] == '\t' || ch[start] == '\r' ||
                         ch[start] == '\n' || ch[start] == '\f') {
                     start++;
                 }
-                if (ch[start] == '\'' || ch[start] == '"') {
+                if (ch[start] == ' ' || ch[start] == '\'' || ch[start] == '"') {
                     start++;
                 }
                 int end = ch.length-2;
