@@ -31,6 +31,11 @@ The following fixes had to be reapplied:
 * 53311: Make ITextFontResolver case-insensitive (use case-insensitive TreeMap instead of HashMap)
 * 55337: Whitespace handling in CSSParser (Somehow related to Bug 2604: `rd_html_to_pdf` does not find images and stylesheets from the BPM inform server)
 
+Add upstream as additional remote repo to track updated sources:
+
+git remote add https://github.com/flyingsaucerproject/flyingsaucer
+
+
 ## LICENSE
 
 Flying Saucer is distributed under the LGPL.  Flying Saucer itself is licensed 
