@@ -68,6 +68,7 @@ public class CheckboxFormField extends AbstractFormField
     try
     {
       PdfFormField formField = field.getCheckField();
+      formField.setFlags(PdfAnnotation.FLAGS_PRINT);
       if (isReadOnly(elm))
       {
         formField.setFieldFlags(PdfFormField.FF_READ_ONLY);

@@ -133,6 +133,8 @@ public class RadioButtonFormField extends AbstractFormField {
         field.setBorderStyle(new PdfBorderDictionary(0.0f, 0));
 
         field.setAppearanceState(fieldElem == checked ? onValue : OFF_STATE);
+        field.setFlags(PdfAnnotation.FLAGS_PRINT);
+        group.setFlags(PdfAnnotation.FLAGS_PRINT);
 
         if (isReadOnly(e)) {
             field.setFieldFlags(PdfFormField.FF_READ_ONLY);
