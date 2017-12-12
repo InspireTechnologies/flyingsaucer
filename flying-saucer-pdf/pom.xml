@@ -18,7 +18,7 @@
 
   <properties>
   
-    <bouncycastle.version>1.38</bouncycastle.version>
+    <bouncycastle.version>1.58</bouncycastle.version>
     <junit.version>4.12</junit.version>
     <openpdf.version>1.0.1</openpdf.version>
     <itext.version>2.1.7</itext.version>
@@ -71,17 +71,19 @@
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcmail-jdk14</artifactId>
+            <artifactId>bcmail-jdk15on</artifactId>
             <version>${bouncycastle.version}</version>
         </dependency>
+	<!--
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bctsp-jdk14</artifactId>
             <version>${bouncycastle.version}</version>
         </dependency>
+	-->
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk14</artifactId>
+            <artifactId>bcprov-jdk15on</artifactId>
             <version>${bouncycastle.version}</version>
         </dependency>
         <dependency>
