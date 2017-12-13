@@ -37,16 +37,17 @@
   </modules>
 
   <scm>
-    <connection>scm:git:git://github.com/flyingsaucerproject/flyingsaucer.git</connection>
-    <developerConnection>scm:git:git@github.com:flyingsaucerproject/flyingsaucer.git</developerConnection>
-    <url>git://github.com/flyingsaucerproject/flyingsaucer.git</url>
-    <tag>HEAD</tag>
+    <connection>scm:git:http://git.inspire.local:8080/r/3rdParty/flyingsaucer.git</connection>
+    <developerConnection>scm:git:http://git.inspire.local:8080/r/3rdParty/flyingsaucer.git</developerConnection>
+    <url>http://git.inspire.local:8080/tree/3rdParty%2Fflyingsaucer.git</url>
+    <tag>inspire</tag>
   </scm>
 
   <distributionManagement>
     <repository>
-      <id>bintray</id>
-      <url>https://api.bintray.com/maven/flyingsaucerproject/maven/org.xhtmlrenderer:flying-saucer</url>
+      <id>inspire-nexus</id>
+      <name>Inspire Technologies Release Repository</name>
+      <url>http://nexus.inspire.local:8081/repository/maven-releases</url>
     </repository>
   </distributionManagement>
 
