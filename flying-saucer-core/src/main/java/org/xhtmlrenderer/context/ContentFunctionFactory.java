@@ -153,10 +153,25 @@ public class ContentFunctionFactory {
                 Box target = c.getBoxById(anchor);
                 if (target != null) {
                     int pageNo = c.getRootLayer().getRelativePageNo(c, target.getAbsY());
-                    return CounterFunction.createCounterText(IdentValue.DECIMAL, pageNo + 1);
+                    return CounterFunction.createCounterText(getListStyleType(function), pageNo + 1);
                 }
             }
             return "";
+        }
+
+        protected IdentValue getListStyleType(FSFunction function) {
+            IdentValue result = IdentValue.DECIMAL;
+
+            List parameters = function.getParameters();
+            if (parameters.size() == 3) {
+                PropertyValue pValue = (PropertyValue)parameters.get(2);
+                IdentValue iValue = IdentValue.valueOf(pValue.getStringValue());
+                if (iValue != null) {
+                    result = iValue;
+                }
+            }
+
+            return result;
         }
 
         public String calculate(LayoutContext c, FSFunction function) {
