@@ -94,7 +94,7 @@ public class BlockBoxing {
             if (c.isPrint()) {
                 boolean needPageClear = child.isNeedPageClear();
                 if (needPageClear || mayCheckKeepTogether) {
-                    c.setMayCheckKeepTogether(mayCheckKeepTogether);
+                    c.setMayCheckKeepTogether(true);
                     boolean tryToAvoidPageBreak = child.getStyle().isAvoidPageBreakInside() && child.crossesPageBreak(c);
                     boolean keepWithInline = child.isNeedsKeepWithInline(c);
                     if (tryToAvoidPageBreak || needPageClear || keepWithInline) {
