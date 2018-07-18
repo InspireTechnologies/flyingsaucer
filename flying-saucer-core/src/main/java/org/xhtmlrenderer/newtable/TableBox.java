@@ -1038,7 +1038,7 @@ public class TableBox extends BlockBox {
             _table.setDimensionsCalculated(false);
 
             int mw = calcWidthArray(c) + bs;
-            _table.setMinWidth(Math.max(mw, _table.getWidth()));
+            _table.setMinWidth(Math.max(mw, _table.getContentWidth()));
             _table.setMaxWidth(_table.getMinWidth());
 
             boolean haveNonFixed = false;
