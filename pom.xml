@@ -36,9 +36,9 @@
   </modules>
 
   <scm>
-    <connection>scm:git:http://git.inspire.local:8080/r/3rdParty/flyingsaucer.git</connection>
-    <developerConnection>scm:git:http://git.inspire.local:8080/r/3rdParty/flyingsaucer.git</developerConnection>
-    <url>http://git.inspire.local:8080/tree/3rdParty%2Fflyingsaucer.git</url>
+    <connection>scm:git:https://github.com/InspireTechnologies/flyingsaucer.git</connection>
+    <developerConnection>scm:git:https://github.com/InspireTechnologies/flyingsaucer.git</developerConnection>
+    <url>http://github.com/InspireTechnologies/flyingsaucer.git</url>
     <tag>inspire</tag>
   </scm>
 
