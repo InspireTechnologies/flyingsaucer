@@ -33,9 +33,6 @@
   <profiles>
     <profile>
       <id>itext</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <dependencies>
       	<!-- 
       		Note: The iText Bouncy Castle dependencies have been moved to a new group and version on maven central.
@@ -93,6 +90,9 @@
     </profile>
     <profile>
       <id>openpdf</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
       <dependencies>
         <dependency>
           <groupId>com.github.librepdf</groupId>
